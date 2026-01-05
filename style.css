@@ -1,0 +1,309 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    overflow: hidden; /* Prevent scrolling, full screen slides */
+}
+
+.slideshow-container {
+    max-width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    padding: 40px 80px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.slide h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: #4db8ff;
+}
+
+/* Fullscreen Video Style */
+.fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;  /* Override the default video max-width */
+    max-height: none; /* Override the default video max-height */
+    object-fit: contain;
+    background-color: #000;
+    z-index: 1000; /* On top of everything */
+}
+
+.content {
+    font-size: 1.5em;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slide-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.slide-text {
+    flex: 1;
+}
+
+.slide-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.slide-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+}
+
+.content h2 {
+    color: #ffa500;
+}
+
+.content ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.reveal-content {
+    text-align: center;
+    max-width: 95vw; /* Allow this specific slide to be much wider than text slides */
+}
+
+.reveal-content img {
+    display: none; /* Hide the image, we are using the table now */
+}
+
+.groups-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    overflow: hidden; /* For border radius */
+}
+
+.groups-table thead tr {
+    background-color: #4db8ff;
+    color: #1e1e1e;
+    text-align: left;
+    font-weight: bold;
+}
+
+.groups-table th,
+.groups-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.groups-table tbody tr {
+    border-bottom: 1px solid #444;
+}
+
+.groups-table tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+.groups-table tbody tr:last-of-type {
+    border-bottom: 2px solid #4db8ff;
+}
+
+.rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.65em; /* Smaller font to fit detailed descriptions */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 800px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.rubric-table th, 
+.rubric-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #444;
+    vertical-align: top;
+}
+
+.rubric-table thead tr {
+    background-color: #ffa500; /* Distinct color for rubric header */
+    color: #1e1e1e;
+    font-weight: bold;
+    text-align: center;
+}
+
+.rubric-table tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+/* Column widths to ensure readability */
+.rubric-table th:first-child,
+.rubric-table td:first-child {
+    width: 15%;
+    font-weight: bold;
+    color: #4db8ff;
+}
+
+.rubric-table th:not(:first-child),
+.rubric-table td:not(:first-child) {
+    width: 17%;
+}
+
+/* Normal video style (unused during fullscreen reveal, but good for fallback) */
+video {
+    max-width: 80%;
+    max-height: 40vh;
+    margin-bottom: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+}
+
+img {
+    max-width: 90%;
+    max-height: 70vh; /* Increased max-height for better visibility */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #4db8ff;
+    color: #1e1e1e;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.button-link:hover {
+    background-color: #3399cc;
+}
+
+.scale-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7em;
+    margin-bottom: 20px;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.scale-legend span {
+    padding: 5px;
+    border-radius: 3px;
+}
+.scale-legend .bad { color: #ff4d4d; }
+.scale-legend .poor { color: #ff9933; }
+.scale-legend .ok { color: #ffff66; color: #333; }
+.scale-legend .good { color: #66ff66; color: #333; }
+.scale-legend .excellent { color: #33cc33; font-weight: bold; }
+
+.rubric-list {
+    font-size: 0.9em;
+}
+
+.rubric-explanation {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+/* Navigation */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 50; /* Ensure arrows are below video but above text */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    z-index: 10;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #717171;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #4db8ff;
+}
